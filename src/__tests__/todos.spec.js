@@ -41,6 +41,8 @@ describe('Todos', () => {
         username: 'user2'
       });
 
+      console.log(userResponse.body)
+
     const todoDate = new Date();
 
     const response = await request(app)

@@ -14,9 +14,11 @@ function checksExistsUserAccount(request, response, next) {
   // Complete aqui
   const { username } = request.headers
   const user = users.find(account => account.username == username)
-  request.user = user;
+  
   if(!user)
     return response.status(400).json({error: "User not exists"})
+
+    request.user = user;
   
   next()
 }
@@ -27,7 +29,7 @@ app.post('/users', (request, response) => {
     username
   } = request.body
   
-  const userExiststs = users.some(account => account.username = username)
+  const userExiststs = users.some(account => account.username == username)
 
   if(userExiststs) 
     response.status(400).json({error: "User already existis"})
